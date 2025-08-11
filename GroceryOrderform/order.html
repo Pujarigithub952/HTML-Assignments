@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Online Grocery Order</title>
+  <style>
+    /* small styling just to make it readable — optional */
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; }
+    fieldset { margin-bottom: 16px; padding: 12px; }
+    label { display:block; margin-top:8px; }
+    .inline { display:inline-block; margin-right:12px; }
+    .actions { margin-top:12px; }
+  </style>
+</head>
+<body>
+
+  <h2>Online Grocery Order</h2>
+
+  <form action="order.php" method="post">
+    <!-- Customer Details -->
+    <fieldset>
+      <legend>Customer Details</legend>
+
+      <label for="fullName">Full Name *</label>
+      <input
+        type="text"
+        id="fullName"
+        name="fullName"
+        placeholder="e.g., Priya Sharma"
+        required
+        autofocus
+      />
+
+      <label for="email">Email *</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="name@example.com"
+        required
+      />
+
+      <label for="mobile">Mobile Number</label>
+      <input
+        type="tel"
+        id="mobile"
+        name="mobile"
+        placeholder="10-digit mobile number"
+        pattern="[0-9]{10}"
+        inputmode="numeric"
+        maxlength="10"
+        title="Enter exactly 10 digits (numbers only)"
+      />
+
+      <label for="address">Delivery Address *</label>
+      <textarea
+        id="address"
+        name="address"
+        rows="3"
+        placeholder="Street, City, State, Pincode"
+        required
+      ></textarea>
+    </fieldset>
+
+    <!-- Order Details -->
+    <fieldset>
+      <legend>Order Details</legend>
+
+      <label>Grocery Items (select one or more)</label>
+      <div>
+        <!-- Notice name="items[]" so server receives an array of selected items -->
+        <span class="inline"><input type="checkbox" id="rice"  name="items[]" value="Rice"><label for="rice"> Rice</label></span>
+        <span class="inline"><input type="checkbox" id="milk"  name="items[]" value="Milk"><label for="milk"> Milk</label></span>
+        <span class="inline"><input type="checkbox" id="bread" name="items[]" value="Bread"><label for="bread"> Bread</label></span>
+        <span class="inline"><input type="checkbox" id="eggs"  name="items[]" value="Eggs"><label for="eggs"> Eggs</label></span>
+        <span class="inline"><input type="checkbox" id="sugar" name="items[]" value="Sugar"><label for="sugar"> Sugar</label></span>
+      </div>
+
+      <label for="quantity">Quantity (1–10) *</label>
+      <input
+        type="number"
+        id="quantity"
+        name="quantity"
+        min="1"
+        max="10"
+        value="1"
+        required
+      />
+
+      <label for="deliveryDate">Delivery Date *</label>
+      <input type="date" id="deliveryDate" name="deliveryDate" required />
+
+      <label for="deliveryTime">Preferred Delivery Time</label>
+      <input type="time" id="deliveryTime" name="deliveryTime" />
+
+      <label>Payment Method *</label>
+      <div>
+        <span class="inline">
+          <input type="radio" id="cod" name="payment" value="Cash on Delivery" required>
+          <label for="cod">Cash on Delivery</label>
+        </span>
+        <span class="inline">
+          <input type="radio" id="upi" name="payment" value="UPI">
+          <label for="upi">UPI</label>
+        </span>
+        <span class="inline">
+          <input type="radio" id="card" name="payment" value="Card">
+          <label for="card">Card</label>
+        </span>
+      </div>
+    </fieldset>
+
+    <label for="instructions">Special Instructions (optional)</label>
+    <textarea id="instructions" name="instructions" rows="2" placeholder="e.g., Leave at doorstep"></textarea>
+
+    <div style="margin-top:12px;">
+      <input type="checkbox" id="confirm" name="confirm" required>
+      <label for="confirm">I confirm my order *</label>
+    </div>
+
+    <div class="actions">
+      <button type="submit">Submit Order</button>
+      <button type="reset">Reset</button>
+    </div>
+  </form>
+
+  <script>
+    // Optional: prevent selecting past dates by setting min to today's date
+    (function() {
+      const today = new Date().toISOString().split('T')[0];
+      const dateInput = document.getElementById('deliveryDate');
+      if (dateInput) dateInput.min = today;
+    })();
+  </script>
+
+</body>
+</html>
