@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Website Feedback Survey</title>
+  <style>
+    /* Small, optional styling to make it readable */
+    body { font-family: system-ui, Arial, sans-serif; line-height: 1.4; padding: 20px; max-width: 900px; margin: auto; }
+    header, main, aside, footer { padding: 12px; }
+    header { border-bottom: 1px solid #ddd; margin-bottom: 18px; }
+    nav ul { list-style: none; padding: 0; margin: 0 0 12px 0; display:flex; gap:12px; }
+    fieldset { border: 1px solid #ddd; padding: 12px; margin: 12px 0; }
+    label { display:block; margin: 8px 0 4px; font-weight: 600; }
+    .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .small { font-size: .95rem; color:#555; }
+    input[type="text"], input[type="email"], input[type="number"], select, textarea {
+      width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;
+    }
+    .controls { margin-top: 12px; }
+    .actions { margin-top: 14px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Website Feedback Survey</h1>
+    <p class="small">We value your opinion. Please take a minute to share your thoughts.</p>
+  </header>
+
+  <nav aria-label="Main navigation">
+    <ul>
+      <li><a href="#" hreflang="en">Home</a></li>
+      <li><a href="#" hreflang="en">About</a></li>
+      <li><a href="#" hreflang="en">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- The form wraps all sections so one submit sends everything -->
+    <form action="submit_feedback.php" method="post" novalidate>
+      <!-- Personal Info Section -->
+      <section id="personal-info" aria-labelledby="personal-info-heading">
+        <h2 id="personal-info-heading">Personal Information</h2>
+
+        <label for="fullName">Full Name <span class="small" aria-hidden="true">*</span></label>
+        <input id="fullName" name="fullName" type="text" placeholder="Your full name" required autofocus>
+
+        <label for="email">Email Address <span class="small" aria-hidden="true">*</span></label>
+        <input id="email" name="email" type="email" placeholder="name@example.com" required>
+
+        <label for="age">Age</label>
+        <input id="age" name="age" type="number" min="10" max="100" placeholder="10 - 100">
+      </section>
+
+      <!-- Website Rating Section -->
+      <section id="website-rating" aria-labelledby="website-rating-heading">
+        <h2 id="website-rating-heading">Website Rating</h2>
+
+        <label for="designRating">Rate website design <span class="small">(1–10)</span></label>
+        <div class="row">
+          <input id="designRating" name="designRating" type="range" min="1" max="10" value="7" aria-describedby="designRatingValue">
+          <output id="designRatingValue" for="designRating">7</output>
+        </div>
+
+        <fieldset>
+          <legend>Rate content quality</legend>
+          <div>
+            <input type="radio" id="qualityExcellent" name="contentQuality" value="Excellent" required>
+            <label for="qualityExcellent">Excellent</label>
+          </div>
+          <div>
+            <input type="radio" id="qualityGood" name="contentQuality" value="Good">
+            <label for="qualityGood">Good</label>
+          </div>
+          <div>
+            <input type="radio" id="qualityAverage" name="contentQuality" value="Average">
+            <label for="qualityAverage">Average</label>
+          </div>
+          <div>
+            <input type="radio" id="qualityPoor" name="contentQuality" value="Poor">
+            <label for="qualityPoor">Poor</label>
+          </div>
+        </fieldset>
+
+        <label for="mostVisited">Most visited page</label>
+        <select id="mostVisited" name="mostVisited" required>
+          <option value="" disabled selected>Select a page</option>
+          <option value="Home">Home</option>
+          <option value="Blog">Blog</option>
+          <option value="Products">Products</option>
+          <option value="Contact">Contact</option>
+        </select>
+      </section>
+
+      <!-- Suggestions Section -->
+      <section id="suggestions" aria-labelledby="suggestions-heading">
+        <h2 id="suggestions-heading">Suggestions</h2>
+
+        <label for="comments">Comments / Suggestions</label>
+        <textarea id="comments" name="comments" rows="5" placeholder="Share ideas or issues you noticed..."></textarea>
+
+        <div class="controls">
+          <input type="checkbox" id="contactAgree" name="contactAgree">
+          <label for="contactAgree">I agree to be contacted regarding my feedback</label>
+        </div>
+      </section>
+
+      <div class="actions">
+        <button type="submit">Submit Feedback</button>
+        <button type="reset">Reset</button>
+      </div>
+    </form>
+  </main>
+
+  <aside aria-label="Motivational note">
+    <p><strong>Note:</strong> Your feedback helps us improve our website experience for everyone.</p>
+  </aside>
+
+  <footer>
+    <p>© 2025 Website Survey</p>
+  </footer>
+
+  <script>
+    // Live update of range output
+    (function(){
+      const range = document.getElementById('designRating');
+      const output = document.getElementById('designRatingValue');
+      if(range && output){
+        const update = () => output.textContent = range.value;
+        range.addEventListener('input', update);
+        update();
+      }
+    })();
+  </script>
+</body>
+</html>
