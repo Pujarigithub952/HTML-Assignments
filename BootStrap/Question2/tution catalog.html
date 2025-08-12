@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Professional Tuition Catalog</title>
+
+  <!-- Bootstrap 5 CSS (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* Custom styles to give a professional look */
+    body {
+      background: #f4f7fa;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color: #1f2937;
+    }
+
+    .hero {
+      background: linear-gradient(90deg, rgba(99,102,241,0.08), rgba(6,182,212,0.04));
+      padding: 48px 0;
+      margin-bottom: 24px;
+    }
+
+    .catalog-title {
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .card {
+      border: none;
+      border-radius: 12px;
+      transition: transform 220ms ease, box-shadow 220ms ease;
+      box-shadow: 0 6px 20px rgba(18, 25, 34, 0.06);
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(18, 25, 34, 0.12);
+    }
+
+    /* image container to position badge */
+    .img-wrap{
+      position: relative;
+      overflow: hidden;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+    .img-wrap img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* badge overlay */
+    .badge-overlay {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 6px;
+      box-shadow: 0 6px 18px rgba(18,25,34,0.12);
+      font-size: 0.85rem;
+    }
+
+    /* Unique color themes for course title + button */
+    .theme-math { color: #7c3aed; }      /* purple */
+    .btn-math  { background-color: #7c3aed; border-color:#7c3aed; }
+    .btn-math:hover { background-color:#6d28d9; border-color:#6d28d9; }
+
+    .theme-science { color: #059669; }  /* green */
+    .btn-science  { background-color: #059669; border-color:#059669; }
+    .btn-science:hover { background-color:#047857; border-color:#047857; }
+
+    .theme-english { color: #0ea5e9; }  /* sky/blue */
+    .btn-english  { background-color: #0ea5e9; border-color:#0ea5e9; }
+    .btn-english:hover { background-color:#0284c7; border-color:#0284c7; }
+
+    /* List styling inside the card */
+    .detail-list { margin: 0; padding: 0; list-style: none; color: #475569; }
+    .detail-list li { margin-bottom: 6px; font-size: 0.95rem; }
+
+    /* card footer */
+    .card-footer {
+      background: transparent;
+      border-top: none;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    @media (max-width: 575px) {
+      .img-wrap img { height: 180px; }
+      .hero { padding: 32px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO / HEADER -->
+  <header class="hero">
+    <div class="container text-center">
+      <h1 class="catalog-title display-6">Professional Tuition Catalog</h1>
+      <p class="text-muted mb-0">Carefully curated live and online courses — learn with top teachers.</p>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="container mb-5">
+    <!-- grid: 3 cols lg, 2 cols md, 1 col small -->
+    <div class="row g-4">
+      <!-- Card 1: Mathematics -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100">
+          <div class="img-wrap">
+            <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1200&q=60"
+                 alt="Mathematics class" />
+            <span class="badge badge-overlay bg-success">Best Seller</span>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title theme-math">Mathematics — Advanced</h5>
+            <p class="card-text"><span class="text-muted">Sharpen problem solving</span> — algebra, calculus & Olympiad prep.</p>
+
+            <ul class="detail-list mt-3 mb-3">
+              <li><strong>Teacher:</strong> Prof. R. Kumar</li>
+              <li><strong>Duration:</strong> 12 weeks (24 sessions)</li>
+              <li><strong>Fee:</strong> ₹9,999</li>
+            </ul>
+
+            <a href="#" class="btn btn-math text-white fw-bold">Enroll Now</a>
+          </div>
+          <div class="card-footer text-center">
+            <small>Limited seats available — batch starts 5 Sep</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Science -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100">
+          <div class="img-wrap">
+            <img src="https://images.unsplash.com/photo-1559757175-5706b3b9bfb7?auto=format&fit=crop&w=1200&q=60"
+                 alt="Science experiments" />
+            <span class="badge badge-overlay text-dark" style="background:#facc15;">New</span>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title theme-science">Science — Explorations</h5>
+            <p class="card-text"><span class="text-muted">Hands-on experiments</span> — physics, chemistry, biology fundamentals.</p>
+
+            <ul class="detail-list mt-3 mb-3">
+              <li><strong>Teacher:</strong> Dr. S. Iyer</li>
+              <li><strong>Duration:</strong> 8 weeks (16 sessions)</li>
+              <li><strong>Fee:</strong> ₹7,499</li>
+            </ul>
+
+            <a href="#" class="btn btn-science text-white fw-bold">Enroll Now</a>
+          </div>
+          <div class="card-footer text-center">
+            <small>Practical kits included — limited offer</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: English -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100">
+          <div class="img-wrap">
+            <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?crop=entropy&auto=format&fit=crop&w=1200&q=60&sat=-20"
+                 alt="English literature study" />
+            <span class="badge badge-overlay bg-primary">Popular</span>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title theme-english">English — Communication</h5>
+            <p class="card-text"><span class="text-muted">Speak confidently</span> — grammar, speaking, creative writing.</p>
+
+            <ul class="detail-list mt-3 mb-3">
+              <li><strong>Teacher:</strong> Ms. A. Patel</li>
+              <li><strong>Duration:</strong> 6 weeks (12 sessions)</li>
+              <li><strong>Fee:</strong> ₹4,999</li>
+            </ul>
+
+            <a href="#" class="btn btn-english text-white fw-bold">Enroll Now</a>
+          </div>
+          <div class="card-footer text-center">
+            <small>Early bird discount for the first 10 enrollees</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- (Optional) Add more cards similarly if you want 4+ cards -->
+    </div>
+  </main>
+
+  <!-- Bootstrap JS (optional) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
